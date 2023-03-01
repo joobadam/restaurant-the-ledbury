@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import Food from '../pages/Food'
 import Gallery from '../pages/Gallery'
 import Home from '../pages/Home'
 import {AnimatePresence} from 'framer-motion'
 import LoadingMask from './LoadingMask'
 import Bar from '../pages/Bar'
+import Food from '../pages/Food'
 
 
 const AnimatedRoutes = () => {
@@ -26,9 +26,9 @@ const AnimatedRoutes = () => {
         {enter? <LoadingMask/>:
         <Routes location={location} key={location.pathname}>
             <Route path='/' element={<Home/>}/>
-            <Route path='/food' element={<Food/>}/>
             <Route path='/gallery' element={<Gallery/>}/>
             <Route path='/bar' element={<Bar/>}/>
+            <Route path='/food/:id' element={<Food/>}/>
         </Routes>}
     </AnimatePresence>
   )

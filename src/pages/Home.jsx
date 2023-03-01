@@ -7,6 +7,11 @@ import ToBar from '../components/ToBar'
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import ScrollTrigger from 'gsap/ScrollTrigger'
+import Mobile from '../components/Mobile';
+
+
+
 
 const Home = () => {
 
@@ -19,30 +24,44 @@ const Home = () => {
   const pRef2= useRef(null)
   const menuRef= useRef(null)
   
+  
   const tl = gsap.timeline()
-  
-  
-useEffect(()=>{
-  tl.from(titleRef.current,{duration:1.5,delay:1.5, x:'100%', ease:'elastic'})
-  tl.from([aboutRef.current,pRef.current,hRef.current,whyRef.current,pRef2.current, menuRef.current],{
-    duration:1,
-    ease:"power3.out",
-    y:"100%",
-    stagger:{
-      amount:2.5
-    }
-  })
-},[]) 
 
+  gsap.registerPlugin(ScrollTrigger)
+  
+
+useEffect(()=>{
+  let ctx = gsap.context(()=>{
+    const titleAnimate = gsap.from(titleRef.current,{duration:1.5,delay:1.5, x:'100%', ease:'elastic'})
+    const scroll = gsap.from([aboutRef.current,pRef.current,hRef.current,whyRef.current,pRef2.current],{
+      stagger:.8,
+      y: '100%',
+      scrollTrigger:{
+        trigger:'#start',
+        start:'bottom top',
+        end:800,
+        scrub:true,
+        pin:true
+      }
+    })
+  })
+
+
+
+  return ()=> ctx.revert()
+},[])
   return (
     <m.div 
-    initial={{opacity:0}}
-    animate={{opacity:1,
+    initial={{y:'-100%'}}
+    animate={{y:0,
     transition:{
       duration:1
     }}}
-    exit={{opacity:0}}
-    className='h-fit w-full relative '>
+    exit={{y:'-100%',
+      transition:{
+        duration:.5
+      }}} 
+    className='h-fit w-full absolute top-0 left-0 right-0 bottom-0 bg-stone-200' >
       <Navbar/>
       <div className='max-w-screen-2xl py-40 px-10 mx-auto'>
         <div className='relative overflow-x-hidden'>
@@ -51,26 +70,24 @@ useEffect(()=>{
         </div>
         <div className='py-20'>
           <div className='overflow-y-hidden'>
-            <h1 className='text-7xl' ref={aboutRef}>ABOUT US</h1>
+            <h1 className='text-7xl' ref={aboutRef} id='about'>ABOUT US</h1>
           </div>
           <div className='my-10 overflow-y-hidden'>
-            <p ref={pRef}>
-            The Ledbury is inspired by our journeys over the past few years. Our cuisine incorporates flavors from the Middle East, the Mediterranean and the Caucasus. We offer Spanish, Italian, Portuguese, Moroccan, Israeli, Lebanese, Georgian, Armenian and Turkish dishes with a curated wine list in our thoughtful, modern space.
+            <p ref={pRef}>Oinos Bistro offers a wide selection of Italian and Mediterranean dishes, benchmark wines and heritage cocktails with an unforgettable dining experience.
             </p>
           </div>
           <div className='flex justify-center items-center flex-col text-3xl leading-relaxed overflow-y-hidden'>
             <div ref={hRef}>
-              <h2>FROM THE ATLAS MOUNTAINS TO ARARAT,</h2>
-              <h2>FROM THE BOSPORUS TO GIBRALTAR</h2>
-              <h2>ALL AT HOME IN BUDAPEST'S SEVENTH DISTRICT</h2>
+              <p>Visit our freshly renovated restaurant and experience our collection of house-made pastas, pizzas and bistro dishes we offer. Visit us to feel our love with every bite of food and every sip of drink</p>
             </div>
           </div>
           <div className='my-10 overflow-y-hidden'>
             <h2 className='text-7xl text-right' ref={whyRef}>Why come?</h2>
           </div>
           <div className='overflow-y-hidden'>
-            <p ref={pRef2}>
-            If you’re looking for a break from traditional Hungarian, this Middle Eastern and Mediterranean-leaning restaurant should be one of your go-to's. The influences span far and wide, picking up on Spanish, Italian, Portuguese, Moroccan, Israeli, Lebanese, Georgian, Armenian and Turkish flavours. Patatas bravas sit next to hummus, shakshuka and Piri Piri chicken. The drinks menu is equally varied. 
+            <p ref={pRef2}>When compiling our wine selection, we primarily took into account the needs of our guests. Thus, those who vote for us can find everything from popular, lighter white wines to more complex, barrel-aged reds.
+            <br /><br />
+            We believe that whether it is lunch or dinner, a bottle of wine always has a place on the table, which combined with the milieu of our restaurant provides a lasting experience
             </p>
           </div>
         </div>
@@ -78,6 +95,7 @@ useEffect(()=>{
           <h2 className='text-7xl' ref={menuRef}>our menu</h2>
         </div>
        <Menu/>
+       <Mobile/>
        <div className='my-20 text-center'>
         <h2 className='text-7xl'>
           the bar
@@ -92,3 +110,4 @@ useEffect(()=>{
 }
 
 export default Home
+

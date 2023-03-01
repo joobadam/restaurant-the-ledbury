@@ -7,16 +7,24 @@ import bar3 from '../assets/bar3.png'
 import bar4 from '../assets/bar4.png'
 
 
+
 const Bar = () => {
+  
   return (
     <m.div
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    className="min-h-screen w-full relative bg-[url('./assets/barbg3.png')] bg-cover bg-center"
+    initial={{y:'100%',}}
+    animate={{y:0,
+    transition:{
+      duration:1
+    }}}
+    exit={{y:'-100%',
+      transition:{
+        duration:1
+      }}} 
+    className="min-h-screen h-fit w-full  bg-[url('./assets/barbg3.png')] bg-cover bg-center scroll-smooth absolute top-0 left-0 right-0 bottom-0 overflow-hidden"
     >
         <Navbar/>
-          <div className='py-34 h-fit max-w-screen-2xl mx-auto flex justify-center items-center'>
+          <div className='py-34  max-w-screen-2xl mx-auto flex justify-center items-center'>
             <div className='hidden md:grid grid-cols-2 grid-rows-3 gap-6 my-36'>
                 <div className='h-[500px] w-[400px] overflow-hidden text-white'>
                   <h2 className='text-3xl tracking-wide'>Our new Pointer Pub is now open!</h2>
@@ -24,10 +32,10 @@ const Bar = () => {
                   <p>Watch sports on large TVs! We also have a large event room available for private events, corporate parties for up to 30 persons.   For event room reservations please call (+36) 70 777 7777.</p>
                 </div>
                 <div className='h-[500px] w-[400px] overflow-hidden'>
-                  <img src={bar2} alt="bar2" className='h-[500px] w-[400px] object-cover rounded-xl'/>
+                  <img src={bar2} alt="bar2"className='h-[500px] w-[400px] object-cover rounded-xl'/>
                 </div>
                 <div className='h-[500px] w-[400px] overflow-hidden'>
-                <img src={bar4} alt="bar4" className='h-[500px] w-[400px] object-cover rounded-xl'/>
+                <img src={bar4}  alt="bar4" className='h-[500px] w-[400px] object-cover rounded-xl'/>
                 </div>
                 <div className='h-[500px] w-[400px] overflow-hidden text-white'>
                   <h2 className='text-2xl tracking-wide my-8'>HANG OUT WITH FRIENDS IN A</h2>

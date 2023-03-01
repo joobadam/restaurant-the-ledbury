@@ -1,23 +1,15 @@
 import './App.css';
-import {BrowserRouter as Router} from 'react-router-dom'
 import AnimatedRoutes from './components/AnimatedRoutes';
-/* import Navbar from './components/Navbar';
-import Footer from './components/Footer' */
+import Mouse from './components/Mouse';
+
 
 
 
 function App() {
-
-
-
   return (
-  
-    <div className="bg-stone-300 overflow-hidden">
-      <Router>
-     {/*   <Navbar/> */}
+    <div className="bg-stone-200 overflow-hidden">
+        <Mouse/>
         <AnimatedRoutes/>
-     {/*    <Footer/> */}
-      </Router>
     </div>
 
   );

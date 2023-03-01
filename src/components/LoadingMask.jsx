@@ -15,7 +15,7 @@ const LoadingMask = () => {
     
     tl.to(imgRef.current,{clipPath:'polygon(5% 5%, 95% 5%, 95% 95%, 5% 95%)'},'+=1.5')
     tl.to(imgRef.current,{clipPath:'polygon(95% 5%, 95% 5%, 95% 95%, 95% 95%)'},'+=1.5')
-    tl.from(colorImgRef.current,{clipPath:'polygon(15% 15%, 85% 15%, 85% 85%, 15% 85%)'},'+=1.3')
+    tl.from(colorImgRef.current,{clipPath:'polygon(15% 15%, 85% 15%, 85% 85%, 15% 85%)'},'+=1')
     tl.to(colorImgRef.current,{clipPath:'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'})
 
   },[])

@@ -14,10 +14,16 @@ import pic10 from '../assets/pic10.png'
 const Gallery = () => {
   return (
     <m.div 
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    className='h-fit w-full relative'>
+    initial={{y:'100%'}}
+    animate={{y:0,
+    transition:{
+      duration:1
+    }}}
+    exit={{y:'-100%',
+      transition:{
+        duration:1
+      }}} 
+    className='min-h-screen h-fit w-full absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-stone-200'>
       <Navbar/>
       <div className='max-w-screen-2xl mx-auto py-10'>
 

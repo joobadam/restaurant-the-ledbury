@@ -10,7 +10,7 @@ const Navbar = () => {
   const [menu, setMenu] =useState(false)
 
   return (
-    <div className='bg-black text-white uppercase fixed z-50 w-full'>
+    <div className='bg-black text-white uppercase fixed z-50 w-full max-h-[400px]'>
         <div className='max-w-screen-2xl py-10 mx-auto px-10 sm:block hidden'>
           <div className='flex justify-between items-center'>
             <div>
@@ -19,16 +19,16 @@ const Navbar = () => {
             <div>
               <ul>
                 <Link to='/'>
-                  Home
+                  <p className='inline  hover:text-yellow-500 duration-150'>Home</p> 
                 </Link>
                 <Link to='/bar' className='ml-5'>
-                  <h2 className='inline text-2xl text-purple-500'>/The Bar</h2>
+                  <h2 className='inline  hover:text-rose-500 duration-150 text-2xl text-purple-500'>/The Bar</h2>
                 </Link>
                 <Link className='mx-5' to='/gallery'>
-                  Gallery
+                  <p className='inline hover:text-yellow-500 duration-150'>Gallery</p> 
                 </Link>
                 <Link to='https://www.foodpanda.hu/?gclid=CjwKCAiAxvGfBhB-EiwAMPakqvPSGdlsi4nKBIrMfvx27h-UOZiLLxX1EKu9o97PT5EN4SdufaEnCRoCmOMQAvD_BwE&ef_id=YxBzDwAD78Q30QBN:20230227143619:s'>
-                  Order
+                  <p className='inline hover:scale-105 hover:text-yellow-500 duration-150'>Order</p> 
                 </Link>
               </ul>
             </div>

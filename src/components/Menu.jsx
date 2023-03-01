@@ -1,12 +1,15 @@
 import React from 'react'
 import {data} from '../assets/data.js'
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
   return (
     <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
     {data.map((item,index)=>(
-        <div key={index}
-        className='border shadow-lg rounded-lg hover:scale-105 duration-300 '>
+        <Link to={`/food/${item.id}`} key={index}>
+        <div 
+        id={item.id}
+        className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'>
             <img 
             className='w-full h-[200px] object-cover rounded-t-lg'
             src={item.image} alt={item.name} />
@@ -17,6 +20,7 @@ const Menu = () => {
                 </p>
             </div>
         </div>
+        </Link>
     ))}
 </div>
   )

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <div className='bg-yellow-500 absolute bottom-0 w-full'>
-        <div className=' text-white p-10 max-w-screen-2xl flex justify-between'>
+        <div className=' text-white p-10 max-w-screen-2xl mx-auto flex justify-between'>
             <div className='flex justify-center items-center flex-col'>
                 <p>&copy; 2023. All Rights Reserved.</p>
                 <p className='text-sm'>Made by  
@@ -35,6 +35,7 @@ const Footer = () => {
             </div>
         </div>
     </div>
+
   )
 }
 
